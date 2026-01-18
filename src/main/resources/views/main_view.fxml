@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.tainttracker.gui.MainController"
+            prefHeight="768.0" prefWidth="1024.0">
+
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="menuOpenProject" mnemonicParsing="false" onAction="#handleOpenProject" text="Open Project…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Analysis">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Run Full Scan" />
+                        <MenuItem mnemonicParsing="false" text="Configure AI…" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    
+    <left>
+        <TreeView fx:id="projectTree" prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER" />
+    </left>
+    
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Vulnerabilities">
+                    <content>
+                        <TableView fx:id="vulnTable" prefHeight="200.0" prefWidth="200.0">
+                            <columns>
+                                <TableColumn fx:id="colType" prefWidth="200.0" text="Type" />
+                                <TableColumn fx:id="colRisk" prefWidth="50.0" text="Risk" />
+                                <TableColumn fx:id="colLocation" prefWidth="400.0" text="Location" />
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+                <Tab text="Console">
+                     <content>
+                        <TextArea fx:id="consoleArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <HBox spacing="10.0" style="-fx-padding: 5px;">
+            <Label fx:id="statusLabel" text="Status: Ready" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
